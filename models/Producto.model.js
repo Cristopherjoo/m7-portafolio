@@ -2,18 +2,23 @@
 import { DataTypes } from "sequelize"
 import { sequelize } from "../database/bd.js"
 
-export const producto = sequelize.define('productos',{
+export const Producto = sequelize.define('productos',{
     nombre: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(100) 
     },
     descripcion: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(350)
+    },
+    categoria: {
+        type: DataTypes.STRING(60)
     },
     precio: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.INTEGER
     }, 
     stock: {
         type: DataTypes.INTEGER
     }
-
+        
+},{
+    timestamps: false
 })
