@@ -8,7 +8,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Importación de rutas
 import viewsRoutes from './routes/views.routes.js';
-import productosRoutes from './routes/productos.routes.js'
+import productosRoutes from './routes/productos.routes.js';
+import categoriasRoutes from './routes/categorias.routes.js';
+import carritosRoutes from './routes/carritos.routes.js';
+import ventasRoutes from './routes/ventas.routes.js';
+
 
 const app = express();
 

@@ -1,0 +1,80 @@
+nav {
+  font-family: "Gaegu", cursive;
+}
+
+.container-fluid {
+  padding: 30px;
+  background-color: rgb(124, 218, 221);
+  border: 1px solid rgb(210, 180, 232);
+  color: aliceblue;
+  font-size: 36px;
+  border-radius: 10px;
+}
+
+.navbar-nav {
+  padding: 10px;
+  align-items: center;
+  mix-blend-mode: luminosity;
+}
+
+.logo {
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(243, 96, 153);
+  border-radius: 8px;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.logo:hover {
+  box-shadow: 0 3px 20px 6px;
+} 
+
+
+.nav-item {
+  font-size: 32px;
+  border-radius: 60px;
+  padding: 36px;
+}
+
+
+.nav-item .nav-link {
+  color: rgb(237, 227, 227);
+
+}
+
+/* .nav-item:hover {
+  box-shadow: 10px 20px 20px 10px;
+} */
+
+#conteiner-product {
+  background-color: rgb(190, 190, 248);
+}
+
+.home-title {
+  padding: 14rem;
+  text-align: center;
+  border: 1px solid lightcoral;
+  color: rgb(10, 81, 93);
+  font-family: 'Monoton', cursive;
+  font-family: 'Zen Tokyo Zoo', cursive;
+}
+
+.title-invent {
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid lightcoral;
+  color: rgb(10, 81, 93);
+  font-family: 'Monoton', cursive;
+  font-family: 'Zen Tokyo Zoo', cursive;
+}
+
+.home-page {
+  background-image: url('https://i.ibb.co/X5vK690/images.jpg');
+  background-repeat: repeat-x;
+}
+
+.listado_productos {
+  margin-top: 60px;
+
+}

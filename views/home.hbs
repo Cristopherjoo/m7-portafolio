@@ -1,11 +1,24 @@
 <section class="home-page ">
 <h1 class="home-title text-center mt-5"> LO  MEJOR  EN  TELEFONIA</h1>
-<div class="text-bg-dark p-3">Apple dias lo  mejor en precio y calidad</div>
+<div class="text-bg-dark p-3">Tienda Web, lo mejor en precio y calidad</div>
 </section>
 
-
-<section class="listado_productos">
+<section>
     <div class="row">
+        {{#if productos}}
+                {{#each productos }}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {{>card 
+                            id= this.dataValues.id
+                            nombre= this.dataValues.nombre
+                            descripcion= this.dataValues.descripcion
+                        }}
+                    </div>
+            {{/each }}
 
+            {{else}}
+            <h2 class="text-center mt-2">No hay productos para mostrar</h2>
+        {{/if}}
+        
     </div>
 </section>
