@@ -1,7 +1,8 @@
 import express from 'express'
 const router = express.Router()
-import {controllerProductos} from '../controllers/productos.controller.js'
+import {getProductos, addProductos} from '../controllers/productos.controller.js'
 
-router.get(['/api/v1/productos'], controllerProductos, (req, res) => {})
+router.get('/productos', getProductos, (req, res) => {})
+router.post('/productos', addProductos, (req, res) => {})
 
 export default router

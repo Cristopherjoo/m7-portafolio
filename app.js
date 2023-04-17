@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Importación de rutas
 import viewsRoutes from './routes/views.routes.js';
+import productosRoutes from './routes/productos.routes.js'
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors());
 
 // Middleware de rutas
 app.use(viewsRoutes);
+app.use('/api/v1/', productosRoutes);
 
 const hbs =create({
     partialsDir:[
@@ -27,8 +29,9 @@ const hbs =create({
 })
 
 // Configuración de express-handlebars
-app.engine('hbs', engine({ extname: '.hbs' })); // Usamos la extensión '.hbs' para las vistas
-app.set('view engine', 'hbs'); // Establecemos el motor de vistas como 'hbs'
+app.engine('hbs', engine({ extname: '.hbs' })); 
+app.set('view engine', 'hbs'); 
 app.set('views', './views');
 
 export default app;
+

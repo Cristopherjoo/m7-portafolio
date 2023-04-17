@@ -20,5 +20,5 @@ export const Producto = sequelize.define('productos',{
     }
         
 },{
-    timestamps: false
+    timestamps: true
 })

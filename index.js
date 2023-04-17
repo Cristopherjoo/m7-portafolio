@@ -9,7 +9,7 @@ const main = async () => {
     try {
         await sequelize.authenticate()
         console.log('Coneccion establecida con exito')
-        await sequelize.sync()
+        await sequelize.sync({force:false})
         let PORT = process.env.PORT || 3000
         app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`))
     } catch (error) {
