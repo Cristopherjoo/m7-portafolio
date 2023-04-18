@@ -7,6 +7,9 @@ import './models/Categoria.model.js'
 import './models/Carro.model.js'
 import './models/Usuario.model.js'
 import './models/DetalleVenta.model.js'
+import './models/CarroProducto.model.js'
+import './models/Venta.model.js'
+import './models/relaciones.js'
 
 //relaciones
 import './models/relaciones.js'
@@ -16,7 +19,7 @@ const main = async () => {
     try {
         await sequelize.authenticate()
         console.log('Coneccion establecida con exito')
-        await sequelize.sync({force:true, alter:true})
+        await sequelize.sync({force:false, alter:true})
         const PORT = process.env.PORT || 3000
         app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`))
     } catch (error) {

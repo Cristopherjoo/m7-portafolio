@@ -42,7 +42,7 @@
             </thead>
 
             <tbody id="cuerpoTabla">
-               
+
                 {{#each productos}}
                 <tr>
                     <td>{{this.dataValues.id}}</td>
@@ -50,8 +50,7 @@
                     <td>{{this.dataValues.precio}}</td>
                     <td>{{this.dataValues.stock}}</td>
                     <td><a href="/update/producto/{{this.dataValues.id}}" class="btn btn-warning">Modificar</a></td>
-                    <td><button class="btn btn-danger"
-                            onclick="eliminarProducto({{this.dataValues.id}})">Eliminar</button></td>
+                    <td><button class="btn btn-danger" onclick="eliminarProducto({{this.dataValues.id}})">Eliminar</button></td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -62,68 +61,37 @@
 
 <script>
 
-import Swal from 'sweetalert2';
-
-const eliminarProducto = (id) => {
-    Swal.fire({
-        title: '¿Está seguro de eliminar el producto con ID ' + id + '?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Eliminar',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.value) {
-            const requestOptions = { method: 'DELETE', redirect: 'follow' };
-            const ruta = "/api/v1/productos/" + id;
-            fetch(ruta, requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                if (result.code === 200) {
-                    Swal.fire('¡Producto eliminado!', result.message, 'success').then(() => {
-                        location.reload();
-                    });
-                } else {
-                    Swal.fire('Error', result.message, 'error');
-                }
-            })
-            .catch(error => console.log('error', error));
+    const eliminarProducto = (id) => {
+        let confirmacion = confirm("está seguro de eliminar el producto con id: " + id) if (confirmacion) {
+            var requestOptions = { method: 'DELETE', redirect: 'follow' }; let ruta =
+                "/api/v1/productos/" + id; fetch(ruta, requestOptions).then(response =>
+                    response.json()).then(result => {
+                        if (result.code == 200) {
+                            alert(result.message) location.reload();
+                        } else { alert(result.message) }
+                    })
+                    .catch(error => console.log('error', error));
         }
-    });
-};
 
-    
-   /* const eliminarProducto = (id) => {
-        let confirmacion = confirm("está seguro de eliminar el producto con id: " + id) if(confirmacion){ 
-  var requestOptions = { method: 'DELETE', redirect: 'follow' }; let ruta =
-            "/api/v1/productos/" + id; fetch(ruta, requestOptions).then(response =>
-                response.json()).then(result => {
-                    if (result.code == 200) {
-                        alert(result.message) location.reload();
-                    } else { alert(result.message) }
-                })
-                .catch(error => console.log('error', error));
-    }*/
-    
-
-     //Lógica agregar producto
-    let formularioAgregar = document.getElementById("formularioAgregar");
-    formularioAgregar.addEventListener("submit", (event) => {
-        event.preventDefault(); var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json"); var raw =
-            JSON.stringify({
-                "nombre": nombre.value, "descripcion": descripcion.value,
-                "categoria": categoria.value, "precio": precio.value, "stock": stock.value
-            });
-        var requestOptions = {
-            method: 'POST', headers: myHeaders, body: raw,
-            redirect: 'follow'
-        }; fetch("/api/v1/productos", requestOptions)
-            .then(response => response.json()).then(result => {
-                if (result.code == 201) {
-                    alert(result.message) formularioAgregar.reset(); location.reload()
-                } else {
-                    alert(result.message)
-                }
-            }).catch(error => console.log('error', error));
-    })
+        //Lógica agregar producto
+        let formularioAgregar = document.getElementById("formularioAgregar")
+        formularioAgregar.addEventListener("submit", (event) => {
+            event.preventDefault(); var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json"); var raw =
+                JSON.stringify({
+                    "nombre": nombre.value, "descripcion": descripcion.value,
+                    "categoria": categoria.value, "precio": precio.value, "stock": stock.value
+                });
+            let requestOptions = {
+                method: 'POST', headers: myHeaders, body: raw,
+                redirect: 'follow'
+            }; fetch("/api/v1/productos", requestOptions)
+                .then(response => response.json()).then(result => {
+                    if (result.code == 201) {
+                        alert(result.message) formularioAgregar.reset(); location.reload()
+                    } else {
+                        alert(result.message)
+                    }
+                }).catch(error => console.log('error', error))
+        })
 </script>

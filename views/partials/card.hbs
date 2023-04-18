@@ -1,0 +1,36 @@
+<div class="card mx-auto my-2" style="width: 80%">
+  <img src="..." class="card-img-top" alt="{{nombre}}">
+  <div class="card-body">
+    <h5 class="card-title">{{nombre}}</h5>
+    <p class="card-text">{{descripcion}}</p>
+    <a href="/productos/{{id}}" class="btn btn-primary">Ver mas</a>
+    <button class="btn btn-success" onclick="agregarProducto('{{id}}')">Agregar al carro</button>
+  </div>
+</div>
+
+
+<script>
+  const agregarProducto = (id) => {
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+
+          var raw = JSON.stringify({
+            "id_cliente": "1",
+            "id_producto": id,
+          });
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+          };
+
+          fetch("http://localhost:3000/api/v1/carritos", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+              alert(result.message)
+            })
+            .catch(error => console.log('error', error));
+            }
+</script>

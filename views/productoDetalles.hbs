@@ -1,0 +1,10 @@
+<h1 class="text-center mt-5">Detalle de producto {{producto.dataValues.nombre}}</h1>
+
+
+
+{{> cardHorizontal
+    nombre= producto.dataValues.nombre
+    descripcion= producto.dataValues.descripcion
+    precio= producto.dataValues.precio
+    stock= producto.dataValues.stock
+}}
