@@ -10,7 +10,6 @@ export const Categoria = sequelize.define('categorias', {
         validate: {
             notEmpty: true
         }
-
     }
 },{
     timestamps: false

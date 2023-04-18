@@ -10,7 +10,6 @@ export const DetalleVenta = sequelize.define('detalle_ventas', {
             min: 0,
             isNumeric: true
         }
-
     },
     precio:{
         type: DataTypes.DECIMAL,

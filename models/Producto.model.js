@@ -14,8 +14,7 @@ export const Producto = sequelize.define('productos', {
         allowNull: false,
         validate: {
             notEmpty: true
-        }
-        
+        }        
     },
     precio: {
         type: DataTypes.DECIMAL,

@@ -1,29 +1,73 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="logo" href="#">PhoneShop</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/" id="linkHome">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/categorias" id="linkInventario">categorias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/carrito" id="linkCarrito">Carrito</a>
-            </li>           
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <div class="container-fluid">
+    <a class="logo" href="#">PhoneShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/" id="linkHome">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categorias" id="linkInventario">categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/carrito" id="linkCarrito">Carrito</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    font-family: "Gaegu", cursive;
+  }
+
+  .container-fluid {
+    padding: 30px;
+    background-color: rgb(124, 218, 221);
+    border: 1px solid rgb(210, 180, 232);
+    color: aliceblue;
+    font-size: 36px;
+    border-radius: 10px;
+  }
+
+  .navbar-nav {
+    padding: 10px;
+    align-items: center;
+    mix-blend-mode: luminosity;
+  }
+
+  .logo {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(243, 96, 153);
+    border-radius: 8px;
+    color: aliceblue;
+    text-decoration: none;
+  }
+
+  .logo:hover {
+    box-shadow: 0 3px 20px 6px;
+  }
+
+  .nav-item {
+    font-size: 32px;
+    border-radius: 60px;
+    padding: 36px;
+  }
+
+  .nav-item .nav-link {
+    color: rgb(255, 255, 255);
+
+  }
+
+  .logo:hover,
+  {
+  box-shadow: 0 0 20px 20px;
+
+  }
+</style>

@@ -21,20 +21,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-
 // Middleware de rutas
 app.use(viewsRoutes);
-app.use('/api/v1/', productosRoutes);
+app.use("/api/v1/", productosRoutes);
+app.use("/api/v1/", categoriasRoutes);
+app.use("/api/v1/", carritosRoutes);
+app.use("/api/v1/", ventasRoutes);
 
-const hbs =create({
-    partialsDir:[
+const hbs = create({
+    partialsDir: [
         'views/partiasl/'
     ],
 })
 
 // Configuración de express-handlebars
-app.engine('hbs', engine({ extname: '.hbs' })); 
-app.set('view engine', 'hbs'); 
+app.engine('hbs', engine({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
 app.set('views', './views');
 
 export default app;

@@ -1,14 +1,12 @@
 import {DataTypes} from 'sequelize';
 import { sequelize } from '../database/bd.js'
 
-
 export const Usuario = sequelize.define('usuarios', {
     nombre: {
         type: DataTypes.STRING(100),
         allowNull: false,
         validate: {
             notEmpty: true,
-
         }
     },
     email: {
@@ -23,7 +21,6 @@ export const Usuario = sequelize.define('usuarios', {
         allowNull: false,
         validate: {
             notEmpty: true,
-
         }
     },
 },{

@@ -1,0 +1,129 @@
+<h1 class="title-invent text-center mt-5">Página de inventario
+    {{producto.dataValues.nombre}}</h1>
+
+<section id="conteiner-products">
+    <h2 class="text-center">Agregar producto</h2>
+    <form class="w-50 m-auto" id="formularioAgregar">
+        nombre:
+        <input class="form-control" type="text" value="{{producto.dataValues.nombre}}" name="nombre" id="nombre" />
+        descripcion:
+        <input class="form-control" type="text" value="{{producto.dataValues.descripcion}}" name="descripcion"
+            id="descripcion" />
+        categoria:
+        <select name="categoria" id="categoria" class="form-control">
+            {{#each categorias}}
+            <option value="{{this.id}}">{{this.nombre}}</option>
+            {{/each}}
+        </select>
+        precio:
+        <input class="form-control" type="number" value="{{producto.dataValues.precio}}" name="precio" id="precio"
+            min="0" />
+        stock:
+        <input class="form-control" type="number" value="{{producto.dataValues.stock}}" name="stock" id="stock"
+            min="0" />
+        <button type="submit" class="btn btn-success mt-3">Agregar</button>
+    </form>
+
+</section>
+
+<section class="mt-5">
+    <div class="row">
+        <h2 class="text-center">Listado de productos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Actualizar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+
+            <tbody id="cuerpoTabla">
+               
+                {{#each productos}}
+                <tr>
+                    <td>{{this.dataValues.id}}</td>
+                    <td>{{this.dataValues.nombre}}</td>
+                    <td>{{this.dataValues.precio}}</td>
+                    <td>{{this.dataValues.stock}}</td>
+                    <td><a href="/update/producto/{{this.dataValues.id}}" class="btn btn-warning">Modificar</a></td>
+                    <td><button class="btn btn-danger"
+                            onclick="eliminarProducto({{this.dataValues.id}})">Eliminar</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+<script>
+
+import Swal from 'sweetalert2';
+
+const eliminarProducto = (id) => {
+    Swal.fire({
+        title: '¿Está seguro de eliminar el producto con ID ' + id + '?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+            const requestOptions = { method: 'DELETE', redirect: 'follow' };
+            const ruta = "/api/v1/productos/" + id;
+            fetch(ruta, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if (result.code === 200) {
+                    Swal.fire('¡Producto eliminado!', result.message, 'success').then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Error', result.message, 'error');
+                }
+            })
+            .catch(error => console.log('error', error));
+        }
+    });
+};
+
+    
+   /* const eliminarProducto = (id) => {
+        let confirmacion = confirm("está seguro de eliminar el producto con id: " + id) if(confirmacion){ 
+  var requestOptions = { method: 'DELETE', redirect: 'follow' }; let ruta =
+            "/api/v1/productos/" + id; fetch(ruta, requestOptions).then(response =>
+                response.json()).then(result => {
+                    if (result.code == 200) {
+                        alert(result.message) location.reload();
+                    } else { alert(result.message) }
+                })
+                .catch(error => console.log('error', error));
+    }*/
+    
+
+     //Lógica agregar producto
+    let formularioAgregar = document.getElementById("formularioAgregar");
+    formularioAgregar.addEventListener("submit", (event) => {
+        event.preventDefault(); var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json"); var raw =
+            JSON.stringify({
+                "nombre": nombre.value, "descripcion": descripcion.value,
+                "categoria": categoria.value, "precio": precio.value, "stock": stock.value
+            });
+        var requestOptions = {
+            method: 'POST', headers: myHeaders, body: raw,
+            redirect: 'follow'
+        }; fetch("/api/v1/productos", requestOptions)
+            .then(response => response.json()).then(result => {
+                if (result.code == 201) {
+                    alert(result.message) formularioAgregar.reset(); location.reload()
+                } else {
+                    alert(result.message)
+                }
+            }).catch(error => console.log('error', error));
+    })
+</script>

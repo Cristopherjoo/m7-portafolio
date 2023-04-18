@@ -1,0 +1,12 @@
+<h1 class="text-center mt-5">Página Categorias</h1>
+
+
+<section>
+    <h2 class="text-center my-5">Listado de categorias disponibles</h2>
+    {{#each categorias }}
+    <a href="/categoria/productos/{{this.id}}/{{this.nombre}}">
+        <p><strong>Tipo de categoria:</strong> {{this.nombre}} - Cantidad de productos: {{this.count}}</p>
+    </a>
+        
+    {{/each }}
+</section>

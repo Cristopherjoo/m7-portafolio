@@ -7,7 +7,6 @@ import { Usuario } from './Usuario.model.js'
 import { Venta } from './Venta.model.js'
 import { DetalleVenta } from './DetalleVenta.model.js'
 
-
 //Relacionar productos con categorias
 //Donde producto tenga una sola categoria
 //una categoria TIENE MUCHO productos

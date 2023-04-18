@@ -9,7 +9,6 @@ export const CarroProductos = sequelize.define('carro_productos', {
             notEmpty: true,
             min: 0
         }
-
     }
 },{
     timestamps: false
