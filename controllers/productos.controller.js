@@ -1,4 +1,3 @@
-
 //productos.controller.js
 import { Producto } from '../models/Producto.model.js';
 
@@ -96,3 +95,4 @@ export const updateProductos = async (req, res) => {
         res.status(500).json({ code: 500, message: "Error al actualizar el producto." });
     }
 }
+

@@ -1,9 +1,11 @@
+<<<<<<< HEAD
 //views.controller.js
+=======
+>>>>>>> 568d3d123f4675ddfb956acf56d0f09881611f5d
 import { Producto } from '../models/Producto.model.js'
 import { Categoria } from '../models/Categoria.model.js'
 import { Carrito } from '../models/Carro.model.js'
 import { sequelize } from '../database/bd.js'
-
 
 export const controllerHome = async (req, res) => {
     let productos = await  Producto.findAll({
@@ -68,6 +70,7 @@ export const controllerInventario = async (req, res) => {
 
         console.log(categorias);
 
+
         res.render("inventario", {
             productos,
             categorias
@@ -95,7 +98,6 @@ export const controllerUpdateProducto = async (req, res) => {
     });
 }
 
-
 export const controllergetProductosPorCategoria = async (req, res) => {
     let id = req.params.id;
     let categoria = req.params.categoria;
@@ -115,7 +117,6 @@ export const controllergetProductosPorCategoria = async (req, res) => {
         productos
     });
 }
-
 
 export const controllerCarrito = async (req, res) => {
     try {
@@ -142,3 +143,4 @@ export const controllerCarrito = async (req, res) => {
         res.status(500).json({ message: "Error al cargar el carrito." });
     }
 };
+

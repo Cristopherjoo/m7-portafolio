@@ -7,5 +7,3 @@ import {getCategorias, addCategorias } from '../controllers/categorias.controlle
 //Rutas
 router.get('/categorias', getCategorias);
 router.post('/categorias', addCategorias);
-
-export default router;

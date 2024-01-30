@@ -1,3 +1,4 @@
+
 //productos.routes.js
 import express from 'express';
 const router = express.Router();
@@ -9,5 +10,6 @@ router.get("/productos/:id", getProductosById);
 router.post("/productos", addProductos);
 router.delete("/productos/:id", deleteProductosById);
 router.put("/productos", updateProductos);
+
 
 export default router;

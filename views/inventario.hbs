@@ -10,6 +10,7 @@
         <input class="form-control" type="text" value="{{producto.dataValues.descripcion}}" name="descripcion"
             id="descripcion" />
         categoria:
+<<<<<<< HEAD
       <select name="categoria" id="categoria" class="form-control">
     {{#each categorias}}
         <option value="{{this.id}}">{{this.nombre}}</option>
@@ -17,6 +18,13 @@
 </select>
 
 
+=======
+        <select name="categoria" id="categoria" class="form-control">
+            {{#each categorias}}
+            <option value="{{this.id}}">{{this.nombre}}</option>
+            {{/each}}
+        </select>
+>>>>>>> 568d3d123f4675ddfb956acf56d0f09881611f5d
         precio:
         <input class="form-control" type="number" value="{{producto.dataValues.precio}}" name="precio" id="precio"
             min="0" />
@@ -63,6 +71,7 @@
 
 <script>
 
+<<<<<<< HEAD
 const eliminarProducto = (id) => {
     let confirmacion = confirm("¿Está seguro de eliminar el producto con id: " + id);
     if (confirmacion) {
@@ -118,4 +127,39 @@ let formularioAgregar = document.getElementById("formularioAgregar");
             })
             .catch(error => console.log('error', error));
     });
+=======
+    const eliminarProducto = (id) => {
+        let confirmacion = confirm("está seguro de eliminar el producto con id: " + id) if (confirmacion) {
+            var requestOptions = { method: 'DELETE', redirect: 'follow' }; let ruta =
+                "/api/v1/productos/" + id; fetch(ruta, requestOptions).then(response =>
+                    response.json()).then(result => {
+                        if (result.code == 200) {
+                            alert(result.message) location.reload();
+                        } else { alert(result.message) }
+                    })
+                    .catch(error => console.log('error', error));
+        }
+
+        //Lógica agregar producto
+        let formularioAgregar = document.getElementById("formularioAgregar")
+        formularioAgregar.addEventListener("submit", (event) => {
+            event.preventDefault(); var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json"); var raw =
+                JSON.stringify({
+                    "nombre": nombre.value, "descripcion": descripcion.value,
+                    "categoria": categoria.value, "precio": precio.value, "stock": stock.value
+                });
+            let requestOptions = {
+                method: 'POST', headers: myHeaders, body: raw,
+                redirect: 'follow'
+            }; fetch("/api/v1/productos", requestOptions)
+                .then(response => response.json()).then(result => {
+                    if (result.code == 201) {
+                        alert(result.message) formularioAgregar.reset(); location.reload()
+                    } else {
+                        alert(result.message)
+                    }
+                }).catch(error => console.log('error', error))
+        })
+>>>>>>> 568d3d123f4675ddfb956acf56d0f09881611f5d
 </script>
