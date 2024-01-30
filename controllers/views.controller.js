@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 //views.controller.js
-=======
->>>>>>> 568d3d123f4675ddfb956acf56d0f09881611f5d
+
 import { Producto } from '../models/Producto.model.js'
 import { Categoria } from '../models/Categoria.model.js'
 import { Carrito } from '../models/Carro.model.js'

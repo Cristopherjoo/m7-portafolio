@@ -51,22 +51,12 @@ export const addProductoCarro = async (req, res) => {
             return res.status(201).json({message: "No hay más productos en stock."})
         }
 
-<<<<<<< HEAD
         res.status(201).json({ message: "Producto agregado correctamente." });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error al agregar el producto al carro.", error: error.message });
     }
 };
-=======
-        res.status(201).json({message: "Producto agregado correctamente."})
-
-    }catch(error){
-        console.log(error)
-        res.status(500).json({message: "Error al agregar el producto al carro."})
-    }
-}
->>>>>>> 568d3d123f4675ddfb956acf56d0f09881611f5d
 
 export const deleteProductoCarro = async (req, res) => {
     try{
