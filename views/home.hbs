@@ -1,0 +1,39 @@
+<section class="home-page ">
+<h1 class="home-title text-center mt-5"> LO  MEJOR  EN  TELEFONIA</h1>
+<div class="text-bg-dark p-3">Tienda Web, lo mejor en precio y calidad</div>
+</section>
+
+<section>
+    <div class="row">
+        {{#if productos}}
+                {{#each productos }}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        {{>card 
+                            id= this.dataValues.id
+                            nombre= this.dataValues.nombre
+                            descripcion= this.dataValues.descripcion
+                        }}
+                    </div>
+            {{/each }}
+
+            {{else}}
+            <h2 class="text-center mt-2">No hay productos para mostrar</h2>
+        {{/if}}
+        
+    </div>
+</section>
+
+<style>
+    .home-page {
+  background-image: url('https://i.ibb.co/X5vK690/images.jpg');
+  background-repeat: repeat-x;
+}
+.home-title {
+  padding: 14rem;
+  text-align: center;
+  border: 1px solid lightcoral;
+  color: rgb(10, 81, 93);
+  font-family: 'Monoton', cursive;
+  font-family: 'Zen Tokyo Zoo', cursive;
+}
+</style>

@@ -1,0 +1,119 @@
+<h1 class="text-center mt-5">Página de carrito</h1>
+
+<section>
+    <h2>Listado de Productos</h2>
+{{#if carrito}}
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">total</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each carrito}}
+          <tr>
+              <td>{{this.id}}</td>
+              <td>{{this.nombre}}</td>
+              <td>{{this.precio}}</td>
+              <td><button onclick="restar({{this.id}})">-</button> {{this.cantidad}} <button onclick="sumar({{this.id}})">+</button></td>
+              <td>{{this.total}}</td>            
+          </tr>
+      {{/each}}
+    <tr>
+      <td colspan="5" class="text-center">Total a pagar: <strong>{{total}}</strong></td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" id="btnPagar">Pagar</button>
+</section>
+
+{{else}}
+<h2 class="text-center mt-3">No existen productos agregados al carro.</h2>
+{{/if}}
+
+<script>
+    const restar = (id) => {
+        let myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+
+        let raw = JSON.stringify({
+        "id_producto": id
+        })
+
+        let requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        }
+
+        fetch("/api/v1/carritos", requestOptions)
+        .then(response => response.json())
+        .then(result =>{
+            alert(result.message)
+            location.reload()
+        })
+        .catch(error => {
+            alert(error)
+        })
+    }
+
+    const sumar = (id) => {
+        var myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+        var raw = JSON.stringify({
+        "id_producto": id
+        })
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        }
+
+        fetch("/api/v1/carritos", requestOptions)
+        .then(response => response.json())
+        .then(result =>{
+            alert(result.message)
+            location.reload()
+        })
+        .catch(error => {
+            alert(error)
+        })
+    }
+
+    let botonPagar = document.getElementById("btnPagar")
+    botonPagar.addEventListener("click", (event) => {
+      var myHeaders = new Headers()
+      myHeaders.append("Content-Type", "application/json")
+
+      var raw = JSON.stringify({
+        "idCliente": 1
+      })
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+      fetch("http://localhost:3000/api/v1/ventas", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          if(result.code == 201){
+            alert(result.message)
+            location.href = "/"
+          }else{
+            alert(result.error)
+          }
+        })
+        .catch(error => console.log('error', error))
+    })
+</script>
+

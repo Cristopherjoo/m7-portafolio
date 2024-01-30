@@ -1,0 +1,85 @@
+<h1 class="text-center mt-5">Actualizar Producto {{producto.nombre}} id({{producto.id}})</h1>
+
+<form id="formularioActualizar">
+    <div class="form-group">
+        <label for="id">ID:</label>
+        <input class="form-control" type="number" value="{{producto.id}}" name="id" id="id" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input class="form-control" type="text" value="{{producto.nombre}}" name="nombre" id="nombre">
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input class="form-control" type="text" value="{{producto.descripcion}}" name="descripcion" id="descripcion">
+    </div>
+
+    <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <select name="categoria" id="categoria" class="form-control">
+            {{#each categorias}}
+            <option value="{{this.id}}" {{#if (eq this.id ../producto.categoriaId)}}selected{{/if}}>
+                {{this.nombre}}
+            </option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input class="form-control" type="number" value="{{producto.precio}}" name="precio" id="precio" min="0">
+    </div>
+
+    <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input class="form-control" type="number" value="{{producto.stock}}" name="stock" id="stock" min="0">
+    </div>
+
+    <button type="submit" class="btn btn-warning mt-3">Actualizar</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const formulario = document.getElementById("formularioActualizar");
+
+        formulario.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            try {
+                const formData = new FormData(formulario);
+                const raw = {};
+
+                formData.forEach((value, key) => {
+                    raw[key] = value;
+                });
+
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(raw),
+                    redirect: 'follow',
+                };
+
+                const response = await fetch("/api/v1/productos", requestOptions);
+                const result = await response.json();
+
+                if (result.code === 201) {
+                    alert(result.message);
+                    location.reload();
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        document.querySelectorAll('[data-selected]').forEach((element) => {
+            element.value = element.dataset.selected;
+        });
+    });
+</script>
