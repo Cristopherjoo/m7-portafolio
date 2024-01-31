@@ -1,4 +1,4 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes} from 'sequelize'
 import { sequelize } from '../database/bd.js'
 
 export const Usuario = sequelize.define('usuarios', {
@@ -26,3 +26,5 @@ export const Usuario = sequelize.define('usuarios', {
 },{
     timestamps: false
   });
+
+  

@@ -10,8 +10,8 @@ import { DetalleVenta } from './DetalleVenta.model.js'
 //Relacionar productos con categorias
 //Donde producto tenga una sola categoria
 //una categoria TIENE MUCHO productos
-Categoria.hasMany(Producto);
-Producto.belongsTo(Categoria);
+Categoria.hasMany(Producto)
+Producto.belongsTo(Categoria)
 
 
 //Lógica de muchos a muchos entre productos y carrito

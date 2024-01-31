@@ -1,8 +1,8 @@
-import {DataTypes} from 'sequelize';
+import {DataTypes} from 'sequelize'
 import { sequelize } from '../database/bd.js'
 
 
-export const Venta = sequelize.define('ventas', {
+  export const Venta = sequelize.define('ventas', {
     fecha: {
         type: DataTypes.DATE,
         allowNull: false,

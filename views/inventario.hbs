@@ -81,19 +81,21 @@ const eliminarProducto = (id) => {
 };
 // Lógica para agregar producto
 let formularioAgregar = document.getElementById("formularioAgregar");
-    formularioAgregar.addEventListener("submit", (event) => {
-        event.preventDefault();
+  formularioAgregar.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    const formData = new FormData(event.target);
 
-        var raw = JSON.stringify({
-            "nombre": nombre.value,
-            "descripcion": descripcion.value,
-            "categoria": categoria.value,
-            "precio": precio.value,
-            "stock": stock.value
-        });
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "nombre": formData.get("nombre"),
+        "descripcion": formData.get("descripcion"),
+        "categoria": formData.get("categoria"),
+        "precio": formData.get("precio"),
+        "stock": formData.get("stock")
+    });
 
         let requestOptions = {
             method: 'POST',

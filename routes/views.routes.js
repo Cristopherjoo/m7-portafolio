@@ -1,20 +1,20 @@
 //views.routes.js
-import express from 'express';
-const router = express.Router();
+import express from 'express'
+const router = express.Router()
 import {controllerHome, controllerCategorias, controllerProductos, controllerInventario, controllerUpdateProducto, controllergetProductosPorCategoria, controllerCarrito} from '../controllers/views.controller.js'
 
-router.get(["/", "/home", "/principal"], controllerHome);
+router.get(["/", "/home", "/principal"], controllerHome)
 
-router.get("/categorias", controllerCategorias);
+router.get("/categorias", controllerCategorias)
 
-router.get("/productos/:id", controllerProductos);
+router.get("/productos/:id", controllerProductos)
 
-router.get("/inventario", controllerInventario);
+router.get("/inventario", controllerInventario)
 
-router.get("/update/producto/:id", controllerUpdateProducto);
+router.get("/update/producto/:id", controllerUpdateProducto)
 
-router.get("/categoria/productos/:id/:categoria", controllergetProductosPorCategoria);
+router.get("/categoria/productos/:id/:categoria", controllergetProductosPorCategoria)
 
-router.get("/carrito", controllerCarrito);
+router.get("/carrito", controllerCarrito)
 
-export default router;
+export default router

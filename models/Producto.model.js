@@ -1,5 +1,5 @@
 //Producto.model.js
-import {DataTypes} from 'sequelize';
+import {DataTypes} from 'sequelize'
 import { sequelize } from '../database/bd.js'
 
 export const Producto = sequelize.define('productos', {

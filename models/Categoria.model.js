@@ -1,6 +1,6 @@
 //Categoria.model.js
 
-import {DataTypes} from 'sequelize';
+import {DataTypes} from 'sequelize'
 import { sequelize } from '../database/bd.js'
 
 
@@ -16,3 +16,4 @@ export const Categoria = sequelize.define('categorias', {
 },{
     timestamps: false
   });
+
