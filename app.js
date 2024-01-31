@@ -1,10 +1,10 @@
-//app.js
-import express from 'express';
-import cors from 'cors';
-import { create, engine } from 'express-handlebars';
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// app.js
+import express from 'express'
+import cors from 'cors'
+import { create, engine } from 'express-handlebars'
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Importación de rutas
 import viewsRoutes from './routes/views.routes.js';
@@ -12,7 +12,6 @@ import productosRoutes from './routes/productos.routes.js';
 import categoriasRoutes from './routes/categorias.routes.js';
 import carritosRoutes from './routes/carritos.routes.js';
 import ventasRoutes from './routes/ventas.routes.js';
-
 
 const app = express();
 
@@ -30,14 +29,15 @@ app.use("/api/v1/", ventasRoutes);
 
 const hbs = create({
     partialsDir: [
-        'views/partiasl/'
+        'views/partials/'
     ],
-})
+});
 
 // Configuración de express-handlebars
 app.engine('hbs', engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-export default app;
 
+
+export default app;

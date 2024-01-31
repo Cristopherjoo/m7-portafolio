@@ -4,7 +4,7 @@ import { Categoria } from './models/Categoria.model.js'
 import { Usuario } from './models/Usuario.model.js'
 
 const usuarios = [
-    { nombre: "marta", email: "marta@mail.com", password: '123456' },
+    { nombre: "marta", email: "marta@mail.com", password: '12345' },
     { nombre: "juan", email: "juan@mail.com", password: '123456' },   
 ]
 
